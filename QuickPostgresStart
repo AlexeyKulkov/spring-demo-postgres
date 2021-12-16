@@ -1,0 +1,22 @@
+1) install docker
+2) run docker
+3) # docker run --name docker-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 postgres
+4) # docker exec -it docker-postgres sh
+4.1) #  psql -U postgres
+4.2) ## \l
+4.3) ## CREATE DATABASE students;
+
+This code will create table with sequence
+==Java==
+@Table
+public class Student {
+    @Id
+    @SequenceGenerator(name = "student_sequence",
+            sequenceName = "student_sequence",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_sequence"
+    )
+========
